@@ -11,30 +11,28 @@ export default function logic(){
     }
 }
 
-function createNewProject(){
-    tasksArray.push(new Array());
-    console.log(tasksArray)
+function createNewProject(projectName){
+    tasksArray.push({
+        projectName: projectName,
+        tasks: new Array()
+    });
 }
 function deleteProject(index){
     tasksArray.splice(index,1);
 }
 function addTaskToProject(index){
-    var title = "Work";
-    var description = "abcac bacbacb";
-    var dueDate = "23-01-2024";
-
-    tasksArray[index].push({
+    tasksArray[index].tasks.push({
         title,
         description,
         dueDate
     }); 
 }
 function deleteTaskFromProject(indexOfProject,indexOfTask){
-    tasksArray[indexOfProject].splice(indexOfTask,1);
+    tasksArray[indexOfProject].tasks.splice(indexOfTask,1);
 }
 function getAllTasks(){
     return tasksArray;
 }
 function getAllProjectTasks(projectIndex){
-    return tasksArray[projectIndex];
+    return tasksArray[projectIndex].tasks;
 }
