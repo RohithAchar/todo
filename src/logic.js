@@ -6,8 +6,6 @@ export default function logic(){
         deleteProject,
         addTaskToProject,
         deleteTaskFromProject,
-        getAllTasks,
-        getAllProjectTasks
     }
 }
 
@@ -30,9 +28,10 @@ function addTaskToProject(index){
 function deleteTaskFromProject(indexOfProject,indexOfTask){
     tasksArray[indexOfProject].tasks.splice(indexOfTask,1);
 }
-function getAllTasks(){
-    return tasksArray;
-}
-function getAllProjectTasks(projectIndex){
-    return tasksArray[projectIndex].tasks;
+function getAllProjectName(){
+    var allProjectsName = [];
+    for (const project of tasksArray) {
+        allProjectsName.push(project.projectName);
+    }
+    return allProjectsName;
 }
