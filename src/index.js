@@ -2,7 +2,9 @@ import logic from "./logic";
 import render from './userInterface';
 import './styles.css';
 
+render().leftSideBarHeading();
 render().addProjectBtn();
+render().header();
 const addProjectButton = document.querySelector('.project-btn');
 addProjectButton.addEventListener('click',addProject);
 
@@ -13,6 +15,7 @@ function addProject(){
 }
 function renderLeftSideBar(){
     render().clearLeftSideBar();
+    render().leftSideBarHeading();
     render().addProjectBtn();
     const addProjectButton = document.querySelector('.project-btn');
     addProjectButton.addEventListener('click',addProject);
@@ -48,5 +51,6 @@ function setTask(index){
 function renderTask(index){
     render().clearMain();
     render().addTaskBtn(index);
+    render().header();
     render().tasks(logic().getTasksFromProject(index));
 }

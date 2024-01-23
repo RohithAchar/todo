@@ -9,8 +9,23 @@ export default function render(){
         tasks,
         clearLeftSideBar,
         clearMain,
-        addProjectBtn
+        addProjectBtn,
+        header
     }
+}
+function header(){
+    var div = document.createElement('div');
+    div.classList.add('card');
+
+    var title = document.createElement('h3');
+    title.textContent = "Title";
+    var description = document.createElement('h3');
+    description.textContent = "Description";
+    var dueDate = document.createElement('h3');
+    dueDate.textContent = "Due Date";
+
+    div.append(title,description,dueDate);
+    mainDiv.appendChild(div);
 }
 // Left sidebar 
 function addProjectBtn(){
@@ -63,9 +78,9 @@ function createCard(title,description,dueDate){
     cardDiv.classList.add('card');
     var titleTag = document.createElement('h3');
     titleTag.textContent = title;
-    var descriptionTag = document.createElement('p');
+    var descriptionTag = document.createElement('h3');
     descriptionTag.textContent = description;
-    var dueTag = document.createElement('p');
+    var dueTag = document.createElement('h3');
     dueTag.textContent = dueDate;
 
     cardDiv.append(titleTag,descriptionTag,dueTag);

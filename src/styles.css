@@ -1,0 +1,42 @@
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 3px;
+}
+
+#content{
+    display: flex;
+}
+#left-side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px;
+}
+.project-btn{
+    height: 50px;
+    background-color: rgb(255, 225, 93);
+    margin-bottom: 30px;
+}
+.btn{
+    background-color: rgb(255, 225, 93);
+    height: 50px;
+    float: right;
+    margin: 10px;
+    margin-right: 100px;
+}
+#main-container{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(233, 233, 233);
+}
+.card{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    padding: 0 100px;
+    border-bottom: 1px solid black;
+}
