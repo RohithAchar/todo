@@ -39,7 +39,10 @@ function deleteTaskFromProject(indexOfProject,indexOfTask){
     tasksArray[indexOfProject].tasks.splice(indexOfTask,1);
 }
 function getTasksFromProject(indexOfProject){
-    return tasksArray[indexOfProject].tasks;
+    if(tasksArray[indexOfProject]){
+        return tasksArray[indexOfProject].tasks;
+    }
+    return [];
 }
 function getAllProjectTask(){
     var tasks = [];
