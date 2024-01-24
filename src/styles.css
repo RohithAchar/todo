@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    overflow: hidden;
 }
 a{
     text-decoration: none;
@@ -34,9 +35,9 @@ a{
     background-color: rgb(233, 233, 233);
 }
 .card{
-    width: 100%;
+    width: 95%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    padding: 0 100px;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
     border-bottom: 1px solid black;
+    margin-left: 2.5%;
 }

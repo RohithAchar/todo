@@ -62,9 +62,10 @@ function addTaskBtn(index){
 }
 function tasks(tasks){
     if(tasks.length > 0){
-        tasks.forEach(task => {
+        tasks.forEach((task, index) => {
             mainDiv.appendChild(
                 createCard(
+                    index,
                     task.title,
                     task.description,
                     task.dueDate    
@@ -73,17 +74,22 @@ function tasks(tasks){
         });
     }
 }
-function createCard(title,description,dueDate){
+function createCard(deleteBtnId,title,description,dueDate){
     var cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
+    // cardDiv.id = `task-${index}`;
     var titleTag = document.createElement('h3');
     titleTag.textContent = title;
     var descriptionTag = document.createElement('h3');
     descriptionTag.textContent = description;
     var dueTag = document.createElement('h3');
     dueTag.textContent = dueDate;
+    var deleteBtn = document.createElement('button');
+    deleteBtn.id = `delete-${deleteBtnId}`;
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
 
-    cardDiv.append(titleTag,descriptionTag,dueTag);
+    cardDiv.append(titleTag,descriptionTag,dueTag,deleteBtn);
     return cardDiv;
 }
 

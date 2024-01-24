@@ -7,7 +7,8 @@ export default function logic(){
         addTaskToProject,
         deleteTaskFromProject,
         getAllProjectName,
-        getTasksFromProject
+        getTasksFromProject,
+        getAllProjectTask
     }
 }
 

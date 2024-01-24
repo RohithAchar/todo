@@ -2,55 +2,75 @@ import logic from "./logic";
 import render from './userInterface';
 import './styles.css';
 
-render().leftSideBarHeading();
-render().addProjectBtn();
-render().header();
-const addProjectButton = document.querySelector('.project-btn');
-addProjectButton.addEventListener('click',addProject);
-
-function addProject(){
-    var projectName = prompt('project name');
-    logic().createNewProject(projectName);
-    renderLeftSideBar();
-}
+//Rendering
 function renderLeftSideBar(){
     render().clearLeftSideBar();
     render().leftSideBarHeading();
     render().addProjectBtn();
-    const addProjectButton = document.querySelector('.project-btn');
-    addProjectButton.addEventListener('click',addProject);
     render().projectName(
         logic().getAllProjectName()
     );
-    var projects = document.querySelectorAll('a');
+    eventForProjectBtn();
+}
+renderLeftSideBar();
+function renderMainContent(projectIndex){
+    render().clearMain();
+    render().addTaskBtn(projectIndex);
+    render().header();
+    render().tasks(
+        logic().getTasksFromProject(projectIndex)
+    );
+    eventForAddTaskBtn(projectIndex);
+    eventForDeleteTaskBtn(projectIndex);
+}
+//Events
+function eventForProjectBtn(){
+    const addNewProjectBtn = document.querySelector('.project-btn');
+    addNewProjectBtn.addEventListener('click',getProjectName);
+}
+function eventForProjects(){
+    var projects = document.querySelectorAll('.project');
     for (const project of projects) {
-        project.addEventListener('click',addGetTaskBtn);
+        project.addEventListener('click',(e) => renderMainContent(e.target.id));
     }
 }
-function addGetTaskBtn(event){
-    var index = event.target.id;
-    renderTask(index);
-    var addTask = document.getElementById(`project-${index}`);
-    addTask.addEventListener('click',() => setTask(index));
+function eventForAddTaskBtn(projectIndex){
+    const addTaskBtn = document.querySelector('.btn');
+    addTaskBtn.addEventListener('click',() => addNewTask(projectIndex));
 }
-function setTask(index){
-    var title = prompt('title');
-    var description = prompt('description');
-    var dueDate = prompt('dueDate');
+function eventForDeleteTaskBtn(projectIndex){
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    for (const deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener('click',(e) => deleteTask(projectIndex, e.target.id));
+    }
+}
+
+//User Interactions
+function getProjectName(){
+    var projectName = prompt('Project title');
+    addNewProject(projectName);
+    renderLeftSideBar();
+    eventForProjects();
+}
+
+//Logic Interaction
+function addNewProject(projectName){
+    logic().createNewProject(projectName);
+}
+function addNewTask(projectIndex){
+    var title = 'title';
+    var description = 'Desc';
+    var dueDate = '27-09-2003';
     logic().addTaskToProject(
-        index,
+        projectIndex,
         title,
         description,
         dueDate
     );
-    renderTask(index);
-    var addTask = document.getElementById(`project-${index}`);
-    addTask.addEventListener('click',() => setTask(index));
+    renderMainContent(projectIndex);
 }
-
-function renderTask(index){
-    render().clearMain();
-    render().addTaskBtn(index);
-    render().header();
-    render().tasks(logic().getTasksFromProject(index));
+function deleteTask(projectIndex, deleteBtnId){
+    var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
+    logic().deleteTaskFromProject(projectIndex, taskIndex);
+    renderMainContent(projectIndex);
 }
