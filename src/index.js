@@ -13,6 +13,7 @@ function renderLeftSideBar(){
     );
     eventForProjectBtn();
     render().projectModal();
+    render().taskModal();
 }
 renderLeftSideBar();
 function renderMainContent(projectIndex){

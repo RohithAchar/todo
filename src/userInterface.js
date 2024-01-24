@@ -12,7 +12,8 @@ export default function render(){
         clearMain,
         addProjectBtn,
         header,
-        projectModal
+        projectModal,
+        taskModal
     }
 }
 function header(){
@@ -120,6 +121,48 @@ function projectModal(){
     inputWrapper.append(titleLabel, titleInput);
     formWrapper.append(inputWrapper,okCancelButton());
     contentDiv.append(formWrapper);
+}
+function taskModal(){
+    var taskModalContainer = document.createElement('div');
+    taskModalContainer.classList.add('hide-task-modal-container');
+
+    var inputWrapper = document.createElement('div');
+    inputWrapper.classList.add('input-wrapper');
+
+    var titleLabel = document.createElement('label');
+    titleLabel.textContent = "Title";
+    var titleInput = document.createElement('input');
+    titleInput.id = 'title';
+    titleInput.type = 'text';
+    var descriptionLabel = document.createElement('label');
+    descriptionLabel.textContent = "Description";
+    var descriptionInput = document.createElement('input');
+    descriptionInput.id = 'description';
+    descriptionInput.type = 'text';
+    var dateLabel = document.createElement('label');
+    dateLabel.textContent = "Due Date";
+    var dateInput = document.createElement('input');
+    dateInput.type = 'date';
+    dateInput.id = 'due-date';
+    var closeBtn = document.createElement('button');
+    closeBtn.classList.add('close-task-modal');
+    closeBtn.textContent = 'Close';
+    var addBtn = document.createElement('button');
+    addBtn.classList.add('add-task-btn');
+    addBtn.textContent = 'Add';
+
+    inputWrapper.append(
+        titleLabel,
+        titleInput,
+        descriptionLabel,
+        descriptionInput,
+        dateLabel,
+        dateInput,
+        closeBtn,
+        addBtn
+    );
+    taskModalContainer.append(inputWrapper);
+    contentDiv.append(taskModalContainer);
 }
 function okCancelButton(){
     var buttonWrapper = document.createElement('div');
