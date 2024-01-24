@@ -43,6 +43,19 @@ a{
     width: 100vw;
     height: 100vh;
 }
+.hide-task-modal-container{
+    display: none;
+}
+.show-task-modal-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
 #content{
     display: flex;
 }
@@ -75,7 +88,7 @@ a{
     grid-template-columns: 1fr 2fr 1fr 1fr;
     border-bottom: 1px solid black;
     margin-left: 2.5%;
-}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,8BAA8B;IAC9B,iBAAiB;AACrB","sourcesContent":["body{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n.project-modal-hide{\n    display: none;\n}\n.project-modal{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px solid black;\n    margin-left: 2.5%;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,8BAA8B;IAC9B,iBAAiB;AACrB","sourcesContent":["body{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n.project-modal-hide{\n    display: none;\n}\n.project-modal{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n.hide-task-modal-container{\n    display: none;\n}\n.show-task-modal-container{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px solid black;\n    margin-left: 2.5%;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -567,13 +580,16 @@ function addTaskToProject(index,title,description,dueDate){
         title : title,
         description : description,
         dueDate : dueDate
-    }); 
+    });
 }
 function deleteTaskFromProject(indexOfProject,indexOfTask){
     tasksArray[indexOfProject].tasks.splice(indexOfTask,1);
 }
 function getTasksFromProject(indexOfProject){
-    return tasksArray[indexOfProject].tasks;
+    if(tasksArray[indexOfProject]){
+        return tasksArray[indexOfProject].tasks;
+    }
+    return [];
 }
 function getAllProjectTask(){
     var tasks = [];
@@ -610,7 +626,8 @@ function render(){
         clearMain,
         addProjectBtn,
         header,
-        projectModal
+        projectModal,
+        taskModal
     }
 }
 function header(){
@@ -643,12 +660,22 @@ function leftSideBarHeading(){
 function projectName(projectNames){
     if(projectNames.length > 0){
         projectNames.forEach((name, index) => {
+            var projectWrapper = document.createElement('div');
+            projectWrapper.classList.add('project-wrapper');
+
             var aTag = document.createElement('a');
             aTag.id = index;
             aTag.classList.add('project');
             aTag.href = "#";
             aTag.textContent = name;
-            leftSideBarDiv.appendChild(aTag);
+
+            var deleteProjectBtn = document.createElement('button');
+            deleteProjectBtn.id = `delete-project-${index}`
+            deleteProjectBtn.classList.add('delete-project');
+            deleteProjectBtn.textContent = "X";
+
+            projectWrapper.append(aTag,deleteProjectBtn);
+            leftSideBarDiv.append(projectWrapper);
         });
     }
 }
@@ -704,11 +731,53 @@ function projectModal(){
     titleInput.placeholder = 'Enter the project name';
     var titleLabel = document.createElement('label');
     titleLabel.textContent = 'Title';
-    titleLabel.for = 'title';
 
     inputWrapper.append(titleLabel, titleInput);
     formWrapper.append(inputWrapper,okCancelButton());
     contentDiv.append(formWrapper);
+}
+function taskModal(){
+    var taskModalContainer = document.createElement('div');
+    taskModalContainer.id = 'task-modal';
+    taskModalContainer.classList.add('hide-task-modal-container');
+
+    var inputWrapper = document.createElement('div');
+    inputWrapper.classList.add('input-wrapper');
+
+    var titleLabel = document.createElement('label');
+    titleLabel.textContent = "Title";
+    var titleInput = document.createElement('input');
+    titleInput.id = 'task-title';
+    titleInput.type = 'text';
+    var descriptionLabel = document.createElement('label');
+    descriptionLabel.textContent = "Description";
+    var descriptionInput = document.createElement('input');
+    descriptionInput.id = 'description';
+    descriptionInput.type = 'text';
+    var dateLabel = document.createElement('label');
+    dateLabel.textContent = "Due Date";
+    var dateInput = document.createElement('input');
+    dateInput.type = 'date';
+    dateInput.id = 'due-date';
+    var closeBtn = document.createElement('button');
+    closeBtn.classList.add('close-task-modal');
+    closeBtn.textContent = 'Close';
+    var addBtn = document.createElement('button');
+    addBtn.classList.add('add-task-btn');
+    addBtn.textContent = 'Add';
+
+    inputWrapper.append(
+        titleLabel,
+        titleInput,
+        descriptionLabel,
+        descriptionInput,
+        dateLabel,
+        dateInput,
+        closeBtn,
+        addBtn
+    );
+    taskModalContainer.append(inputWrapper);
+    contentDiv.append(taskModalContainer);
 }
 function okCancelButton(){
     var buttonWrapper = document.createElement('div');
@@ -830,9 +899,12 @@ function renderLeftSideBar(){
         (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getAllProjectName()
     );
     eventForProjectBtn();
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
+    // render().projectModal();
+    // render().taskModal();
 }
 renderLeftSideBar();
+(0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
+(0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().taskModal();
 function renderMainContent(projectIndex){
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addTaskBtn(projectIndex);
@@ -840,13 +912,15 @@ function renderMainContent(projectIndex){
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().tasks(
         (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getTasksFromProject(projectIndex)
     );
-    eventForAddTaskBtn(projectIndex);
+    eventForAddTaskBtn();
     eventForDeleteTaskBtn(projectIndex);
 }
 //Events
 function eventForProjectBtn(){
     const addNewProjectBtn = document.querySelector('.project-btn');
-    addNewProjectBtn.addEventListener('click',openProjectModal);
+    addNewProjectBtn.addEventListener('click',() => {
+        openProjectModal();
+    });
 }
 function eventForProjects(){
     var projects = document.querySelectorAll('.project');
@@ -854,9 +928,10 @@ function eventForProjects(){
         project.addEventListener('click',(e) => renderMainContent(e.target.id));
     }
 }
-function eventForAddTaskBtn(projectIndex){
+function eventForAddTaskBtn(){
     const addTaskBtn = document.querySelector('.btn');
-    addTaskBtn.addEventListener('click',() => addNewTask(projectIndex));
+    // addTaskBtn.addEventListener('click',() => addNewTask(projectIndex));
+    addTaskBtn.addEventListener('click',(e) => openTaskModal(e));
 }
 function eventForDeleteTaskBtn(projectIndex){
     const deleteBtns = document.querySelectorAll('.delete-btn');
@@ -871,6 +946,20 @@ function eventForCancelProject(projectModalDiv){
 function eventForOkProject(projectModalDiv){
     var okBtn = document.querySelector('.ok-btn');
     okBtn.addEventListener('click',() => getProjectTitle(projectModalDiv));
+}
+function eventForDeleteProjectBtn(){
+    var deleteProjectBtns = document.querySelectorAll('.delete-project');
+    for (const deleteBtn of deleteProjectBtns) {
+        deleteBtn.addEventListener('click', (e) => deleteProject(e));
+    }
+}
+function eventForCloseModalBtn(taskModalDiv){
+    var closeTaskModalBtn = document.querySelector('.close-task-modal');
+    closeTaskModalBtn.addEventListener('click',() => closeTaskModal(taskModalDiv));
+}
+function eventForAddBtn(projectIndex, taskModalDiv){
+    var addTaskBtn = document.querySelector('.add-task-btn');
+    addTaskBtn.addEventListener('click',() => getTaskDetails(projectIndex, taskModalDiv));
 }
 
 //User Interactions
@@ -897,30 +986,79 @@ function getProjectTitle(projectModalDiv){
         setNewProject(title.toUpperCase());
         renderLeftSideBar();
         eventForProjects();
+        eventForDeleteProjectBtn();
         closeProjectModal(projectModalDiv);
     }
+}
+function openTaskModal(addTaskBtnId){
+    var id = addTaskBtnId.target.id;
+    var projectIndex = id.charAt(id.length - 1);
+    var taskModal = document.getElementById('task-modal');
+    taskModal.classList.remove('hide-task-modal-container');
+    taskModal.classList.add('show-task-modal-container');
+    eventForCloseModalBtn(taskModal);
+    eventForAddBtn(projectIndex, taskModal);
+}
+function closeTaskModal(taskModalDiv){
+    taskModalDiv.classList.remove('show-task-modal-container');
+    taskModalDiv.classList.add('hide-task-modal-container');
+}
+function getTaskDetails(projectIndex, taskModalDiv){
+    var titleInput = document.getElementById('task-title');
+    var descriptionInput = document.getElementById('description');
+    var dueDate = document.getElementById('due-date');
+
+    var title = titleInput.value;
+    var description = descriptionInput.value;
+    var date = dueDate.value;
+
+    if(
+        title.length > 0 &&
+        description.length > 0 &&
+        date.length > 0
+    ){
+        addNewTask(
+            projectIndex,
+            title.toUpperCase(),
+            description,
+            date,
+            taskModalDiv
+        );
+    }
+    titleInput.value = "";
+    descriptionInput.value = '';
+    dueDate.value = '';
 }
 
 //Logic Interaction
 function setNewProject(projectName){
     (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().createNewProject(projectName);
 }
-function addNewTask(projectIndex){
-    var title = 'title';
-    var description = 'Desc';
-    var dueDate = '27-09-2003';
+function addNewTask(projectIndex, title, description, dueDate,taskModalDiv){
+    var addTaskBtn = document.querySelector('.btn');
+    var btnId = addTaskBtn.id;
+    var index = btnId.charAt(btnId.length - 1);
     (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().addTaskToProject(
-        projectIndex,
+        index,
         title,
         description,
         dueDate
     );
-    renderMainContent(projectIndex);
+    closeTaskModal(taskModalDiv);
+    renderMainContent(index);
 }
 function deleteTask(projectIndex, deleteBtnId){
     var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
     (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteTaskFromProject(projectIndex, taskIndex);
     renderMainContent(projectIndex);
+}
+function deleteProject(e){
+    var id = e.target.id;
+    var projectIndex = id.charAt(id.length - 1);
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteProject(projectIndex);
+    renderLeftSideBar();
+    renderMainContent(projectIndex);
+    eventForDeleteProjectBtn();
 }
 })();
 
