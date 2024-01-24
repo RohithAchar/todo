@@ -20,6 +20,19 @@ a{
     width: 100vw;
     height: 100vh;
 }
+.hide-task-modal-container{
+    display: none;
+}
+.show-task-modal-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
 #content{
     display: flex;
 }

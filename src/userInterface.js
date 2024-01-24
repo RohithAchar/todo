@@ -124,6 +124,7 @@ function projectModal(){
 }
 function taskModal(){
     var taskModalContainer = document.createElement('div');
+    taskModalContainer.id = 'task-modal';
     taskModalContainer.classList.add('hide-task-modal-container');
 
     var inputWrapper = document.createElement('div');
@@ -132,7 +133,7 @@ function taskModal(){
     var titleLabel = document.createElement('label');
     titleLabel.textContent = "Title";
     var titleInput = document.createElement('input');
-    titleInput.id = 'title';
+    titleInput.id = 'task-title';
     titleInput.type = 'text';
     var descriptionLabel = document.createElement('label');
     descriptionLabel.textContent = "Description";

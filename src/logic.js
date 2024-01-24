@@ -33,7 +33,7 @@ function addTaskToProject(index,title,description,dueDate){
         title : title,
         description : description,
         dueDate : dueDate
-    }); 
+    });
 }
 function deleteTaskFromProject(indexOfProject,indexOfTask){
     tasksArray[indexOfProject].tasks.splice(indexOfTask,1);
