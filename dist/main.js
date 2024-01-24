@@ -870,7 +870,7 @@ function eventForCancelProject(projectModalDiv){
 }
 function eventForOkProject(projectModalDiv){
     var okBtn = document.querySelector('.ok-btn');
-    okBtn.addEventListener('click',getProjectTitle(projectModalDiv));
+    okBtn.addEventListener('click',() => getProjectTitle(projectModalDiv));
 }
 
 //User Interactions
@@ -892,7 +892,13 @@ function closeProjectModal(projectModalDiv){
 function getProjectTitle(projectModalDiv){
     var titleInput = document.getElementById('title');
     var title = titleInput.value;
-    console.log(title);
+    if(title.length > 0){
+        titleInput.value = '';
+        setNewProject(title.toUpperCase());
+        renderLeftSideBar();
+        eventForProjects();
+        closeProjectModal(projectModalDiv);
+    }
 }
 
 //Logic Interaction

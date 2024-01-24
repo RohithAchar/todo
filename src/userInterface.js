@@ -45,12 +45,22 @@ function leftSideBarHeading(){
 function projectName(projectNames){
     if(projectNames.length > 0){
         projectNames.forEach((name, index) => {
+            var projectWrapper = document.createElement('div');
+            projectWrapper.classList.add('project-wrapper');
+
             var aTag = document.createElement('a');
             aTag.id = index;
             aTag.classList.add('project');
             aTag.href = "#";
             aTag.textContent = name;
-            leftSideBarDiv.appendChild(aTag);
+
+            var deleteProjectBtn = document.createElement('button');
+            deleteProjectBtn.id = `delete-project-${index}`
+            deleteProjectBtn.classList.add('delete-project');
+            deleteProjectBtn.textContent = "D";
+
+            projectWrapper.append(aTag,deleteProjectBtn);
+            leftSideBarDiv.append(projectWrapper);
         });
     }
 }
