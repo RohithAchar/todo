@@ -21,7 +21,49 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `body{
+    margin: 0;
+    overflow: hidden;
+}
+a{
+    text-decoration: none;
+    color: black;
+    padding: 3px;
+}
+
+#content{
+    display: flex;
+}
+#left-side-bar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 100px;
+}
+.project-btn{
+    height: 50px;
+    background-color: rgb(255, 225, 93);
+    margin-bottom: 30px;
+}
+.btn{
+    background-color: rgb(255, 225, 93);
+    height: 50px;
+    float: right;
+    margin: 10px;
+    margin-right: 100px;
+}
+#main-container{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(233, 233, 233);
+}
+.card{
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+    border-bottom: 1px solid black;
+    margin-left: 2.5%;
+}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,8BAA8B;IAC9B,iBAAiB;AACrB","sourcesContent":["body{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px solid black;\n    margin-left: 2.5%;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -552,8 +594,23 @@ function render(){
         tasks,
         clearLeftSideBar,
         clearMain,
-        addProjectBtn
+        addProjectBtn,
+        header
     }
+}
+function header(){
+    var div = document.createElement('div');
+    div.classList.add('card');
+
+    var title = document.createElement('h3');
+    title.textContent = "Title";
+    var description = document.createElement('h3');
+    description.textContent = "Description";
+    var dueDate = document.createElement('h3');
+    dueDate.textContent = "Due Date";
+
+    div.append(title,description,dueDate);
+    mainDiv.appendChild(div);
 }
 // Left sidebar 
 function addProjectBtn(){
@@ -601,17 +658,21 @@ function tasks(tasks){
         });
     }
 }
-function createCard(title,description,dueDate){
+function createCard(deleteBtnId,title,description,dueDate){
     var cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
+    // cardDiv.id = `task-${index}`;
     var titleTag = document.createElement('h3');
     titleTag.textContent = title;
-    var descriptionTag = document.createElement('p');
+    var descriptionTag = document.createElement('h3');
     descriptionTag.textContent = description;
-    var dueTag = document.createElement('p');
+    var dueTag = document.createElement('h3');
     dueTag.textContent = dueDate;
+    var deleteBtn = document.createElement('button');
+    deleteBtn.id = `delete-${deleteBtnId}`;
+    deleteBtn.textContent = 'Delete';
 
-    cardDiv.append(titleTag,descriptionTag,dueTag);
+    cardDiv.append(titleTag,descriptionTag,dueTag,deleteBtn);
     return cardDiv;
 }
 
@@ -711,48 +772,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-function init(){
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addProjectBtn();
-    var addProject = document.querySelector('.project-btn');
-    addProject.addEventListener('click',getProjectInfo);
-}
-init();
-function getProjectInfo(){
-    let projectName = prompt('Enter project name');
-    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().createNewProject(projectName);
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearLeftSideBar();
-    init();
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectName(
-        (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getAllProjectName()
-    );
-    var projectsDOM = document.querySelectorAll('a');
-    for (const project of projectsDOM) {
-        project.addEventListener('click',
-        (event) => {
-            var index = event.target.id;
-            (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
-            (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addTaskBtn(index);
-            var addTask = document.getElementById(`project-${index}`);
-            addTask.addEventListener('click',(event) => {
-                let index = event.target.id;
-                let title = prompt('ENter title');
-                let description = prompt('ENter descr');
-                let dueDate = prompt('ENter due');
-                (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().addTaskToProject(
-                    index.charAt(index.length - 1),
-                    title,
-                    description,
-                    dueDate
-                );
-                (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
-                (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().tasks((0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getTasksFromProject(
-                    index.charAt(index.length - 1)
-                ));
-            });
-        });
-    }
-}
 
 
 })();
