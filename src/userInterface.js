@@ -57,7 +57,7 @@ function projectName(projectNames){
             var deleteProjectBtn = document.createElement('button');
             deleteProjectBtn.id = `delete-project-${index}`
             deleteProjectBtn.classList.add('delete-project');
-            deleteProjectBtn.textContent = "D";
+            deleteProjectBtn.textContent = "X";
 
             projectWrapper.append(aTag,deleteProjectBtn);
             leftSideBarDiv.append(projectWrapper);
@@ -116,7 +116,6 @@ function projectModal(){
     titleInput.placeholder = 'Enter the project name';
     var titleLabel = document.createElement('label');
     titleLabel.textContent = 'Title';
-    titleLabel.for = 'title';
 
     inputWrapper.append(titleLabel, titleInput);
     formWrapper.append(inputWrapper,okCancelButton());

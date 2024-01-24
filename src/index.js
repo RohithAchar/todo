@@ -54,6 +54,12 @@ function eventForOkProject(projectModalDiv){
     var okBtn = document.querySelector('.ok-btn');
     okBtn.addEventListener('click',() => getProjectTitle(projectModalDiv));
 }
+function eventForDeleteProjectBtn(){
+    var deleteProjectBtns = document.querySelectorAll('.delete-project');
+    for (const deleteBtn of deleteProjectBtns) {
+        deleteBtn.addEventListener('click', (e) => deleteProject(e));
+    }
+}
 
 //User Interactions
 function openProjectModal(){
@@ -79,6 +85,7 @@ function getProjectTitle(projectModalDiv){
         setNewProject(title.toUpperCase());
         renderLeftSideBar();
         eventForProjects();
+        eventForDeleteProjectBtn();
         closeProjectModal(projectModalDiv);
     }
 }
@@ -103,4 +110,11 @@ function deleteTask(projectIndex, deleteBtnId){
     var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
     logic().deleteTaskFromProject(projectIndex, taskIndex);
     renderMainContent(projectIndex);
+}
+function deleteProject(e){
+    var id = e.target.id;
+    var projectIndex = id.charAt(id.length - 1);
+    logic().deleteProject(projectIndex);
+    renderLeftSideBar();
+    eventForDeleteProjectBtn();
 }
