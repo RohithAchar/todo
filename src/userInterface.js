@@ -1,5 +1,6 @@
 const leftSideBarDiv = document.querySelector('#left-side-bar');
 const mainDiv = document.querySelector('#main-container');
+const contentDiv = document.querySelector('#content');
 
 export default function render(){
     return{
@@ -10,7 +11,8 @@ export default function render(){
         clearLeftSideBar,
         clearMain,
         addProjectBtn,
-        header
+        header,
+        projectModal
     }
 }
 function header(){
@@ -92,7 +94,37 @@ function createCard(deleteBtnId,title,description,dueDate){
     cardDiv.append(titleTag,descriptionTag,dueTag,deleteBtn);
     return cardDiv;
 }
+function projectModal(){
+    var formWrapper = document.createElement('div');
+    formWrapper.classList.add('project-modal-hide');
+    var inputWrapper = document.createElement('div');
+    inputWrapper.classList.add('input-wrapper');
+    var titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.id = 'title';
+    titleInput.required = true;
+    titleInput.placeholder = 'Enter the project name';
+    var titleLabel = document.createElement('label');
+    titleLabel.textContent = 'Title';
+    titleLabel.for = 'title';
 
+    inputWrapper.append(titleLabel, titleInput);
+    formWrapper.append(inputWrapper,okCancelButton());
+    contentDiv.append(formWrapper);
+}
+function okCancelButton(){
+    var buttonWrapper = document.createElement('div');
+    buttonWrapper.classList.add('btn-wrapper');
+    var cancelBtn = document.createElement('button');
+    cancelBtn.classList.add('cancel-btn');
+    cancelBtn.textContent = 'Cancel';
+    var okButton = document.createElement('button');
+    okButton.classList.add('ok-btn');
+    okButton.textContent = 'Ok';
+
+    buttonWrapper.append(cancelBtn,okButton);
+    return buttonWrapper;
+}
 // Erasing
 function clearLeftSideBar(){
     leftSideBarDiv.textContent = '';

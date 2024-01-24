@@ -7,7 +7,19 @@ a{
     color: black;
     padding: 3px;
 }
-
+.project-modal-hide{
+    display: none;
+}
+.project-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
 #content{
     display: flex;
 }

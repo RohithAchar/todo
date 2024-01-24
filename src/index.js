@@ -2,6 +2,7 @@ import logic from "./logic";
 import render from './userInterface';
 import './styles.css';
 
+
 //Rendering
 function renderLeftSideBar(){
     render().clearLeftSideBar();
@@ -11,6 +12,7 @@ function renderLeftSideBar(){
         logic().getAllProjectName()
     );
     eventForProjectBtn();
+    render().projectModal();
 }
 renderLeftSideBar();
 function renderMainContent(projectIndex){
@@ -26,7 +28,7 @@ function renderMainContent(projectIndex){
 //Events
 function eventForProjectBtn(){
     const addNewProjectBtn = document.querySelector('.project-btn');
-    addNewProjectBtn.addEventListener('click',getProjectName);
+    addNewProjectBtn.addEventListener('click',openProjectModal);
 }
 function eventForProjects(){
     var projects = document.querySelectorAll('.project');
@@ -44,17 +46,45 @@ function eventForDeleteTaskBtn(projectIndex){
         deleteBtn.addEventListener('click',(e) => deleteTask(projectIndex, e.target.id));
     }
 }
+function eventForCancelProject(projectModalDiv){
+    var cancelBtn = document.querySelector('.cancel-btn');
+    cancelBtn.addEventListener('click', () => closeProjectModal(projectModalDiv));
+}
+function eventForOkProject(projectModalDiv){
+    var okBtn = document.querySelector('.ok-btn');
+    okBtn.addEventListener('click',() => getProjectTitle(projectModalDiv));
+}
 
 //User Interactions
-function getProjectName(){
-    var projectName = prompt('Project title');
-    addNewProject(projectName);
-    renderLeftSideBar();
-    eventForProjects();
+function openProjectModal(){
+    // var projectName = prompt('Project title');
+    // addNewProject(projectName);
+    // renderLeftSideBar();
+    // eventForProjects();
+    const projectModalDiv = document.querySelector('.project-modal-hide');
+    projectModalDiv.classList.remove('project-modal-hide');
+    projectModalDiv.classList.add('project-modal');
+    eventForCancelProject(projectModalDiv);
+    eventForOkProject(projectModalDiv);
+}
+function closeProjectModal(projectModalDiv){
+    projectModalDiv.classList.remove('project-modal');
+    projectModalDiv.classList.add('project-modal-hide');
+}
+function getProjectTitle(projectModalDiv){
+    var titleInput = document.getElementById('title');
+    var title = titleInput.value;
+    if(title.length > 0){
+        titleInput.value = '';
+        setNewProject(title.toUpperCase());
+        renderLeftSideBar();
+        eventForProjects();
+        closeProjectModal(projectModalDiv);
+    }
 }
 
 //Logic Interaction
-function addNewProject(projectName){
+function setNewProject(projectName){
     logic().createNewProject(projectName);
 }
 function addNewTask(projectIndex){

@@ -30,7 +30,19 @@ a{
     color: black;
     padding: 3px;
 }
-
+.project-modal-hide{
+    display: none;
+}
+.project-modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
 #content{
     display: flex;
 }
@@ -63,7 +75,7 @@ a{
     grid-template-columns: 1fr 2fr 1fr 1fr;
     border-bottom: 1px solid black;
     margin-left: 2.5%;
-}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,8BAA8B;IAC9B,iBAAiB;AACrB","sourcesContent":["body{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px solid black;\n    margin-left: 2.5%;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,8BAA8B;IAC9B,iBAAiB;AACrB","sourcesContent":["body{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n.project-modal-hide{\n    display: none;\n}\n.project-modal{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px solid black;\n    margin-left: 2.5%;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -529,7 +541,8 @@ function logic(){
         addTaskToProject,
         deleteTaskFromProject,
         getAllProjectName,
-        getTasksFromProject
+        getTasksFromProject,
+        getAllProjectTask
     }
 }
 
@@ -585,6 +598,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const leftSideBarDiv = document.querySelector('#left-side-bar');
 const mainDiv = document.querySelector('#main-container');
+const contentDiv = document.querySelector('#content');
 
 function render(){
     return{
@@ -595,7 +609,8 @@ function render(){
         clearLeftSideBar,
         clearMain,
         addProjectBtn,
-        header
+        header,
+        projectModal
     }
 }
 function header(){
@@ -647,9 +662,10 @@ function addTaskBtn(index){
 }
 function tasks(tasks){
     if(tasks.length > 0){
-        tasks.forEach(task => {
+        tasks.forEach((task, index) => {
             mainDiv.appendChild(
                 createCard(
+                    index,
                     task.title,
                     task.description,
                     task.dueDate    
@@ -671,11 +687,42 @@ function createCard(deleteBtnId,title,description,dueDate){
     var deleteBtn = document.createElement('button');
     deleteBtn.id = `delete-${deleteBtnId}`;
     deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete-btn');
 
     cardDiv.append(titleTag,descriptionTag,dueTag,deleteBtn);
     return cardDiv;
 }
+function projectModal(){
+    var formWrapper = document.createElement('div');
+    formWrapper.classList.add('project-modal-hide');
+    var inputWrapper = document.createElement('div');
+    inputWrapper.classList.add('input-wrapper');
+    var titleInput = document.createElement('input');
+    titleInput.type = 'text';
+    titleInput.id = 'title';
+    titleInput.required = true;
+    titleInput.placeholder = 'Enter the project name';
+    var titleLabel = document.createElement('label');
+    titleLabel.textContent = 'Title';
+    titleLabel.for = 'title';
 
+    inputWrapper.append(titleLabel, titleInput);
+    formWrapper.append(inputWrapper,okCancelButton());
+    contentDiv.append(formWrapper);
+}
+function okCancelButton(){
+    var buttonWrapper = document.createElement('div');
+    buttonWrapper.classList.add('btn-wrapper');
+    var cancelBtn = document.createElement('button');
+    cancelBtn.classList.add('cancel-btn');
+    cancelBtn.textContent = 'Cancel';
+    var okButton = document.createElement('button');
+    okButton.classList.add('ok-btn');
+    okButton.textContent = 'Ok';
+
+    buttonWrapper.append(cancelBtn,okButton);
+    return buttonWrapper;
+}
 // Erasing
 function clearLeftSideBar(){
     leftSideBarDiv.textContent = '';
@@ -774,6 +821,101 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+//Rendering
+function renderLeftSideBar(){
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearLeftSideBar();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().leftSideBarHeading();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addProjectBtn();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectName(
+        (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getAllProjectName()
+    );
+    eventForProjectBtn();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
+}
+renderLeftSideBar();
+function renderMainContent(projectIndex){
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addTaskBtn(projectIndex);
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().header();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().tasks(
+        (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getTasksFromProject(projectIndex)
+    );
+    eventForAddTaskBtn(projectIndex);
+    eventForDeleteTaskBtn(projectIndex);
+}
+//Events
+function eventForProjectBtn(){
+    const addNewProjectBtn = document.querySelector('.project-btn');
+    addNewProjectBtn.addEventListener('click',openProjectModal);
+}
+function eventForProjects(){
+    var projects = document.querySelectorAll('.project');
+    for (const project of projects) {
+        project.addEventListener('click',(e) => renderMainContent(e.target.id));
+    }
+}
+function eventForAddTaskBtn(projectIndex){
+    const addTaskBtn = document.querySelector('.btn');
+    addTaskBtn.addEventListener('click',() => addNewTask(projectIndex));
+}
+function eventForDeleteTaskBtn(projectIndex){
+    const deleteBtns = document.querySelectorAll('.delete-btn');
+    for (const deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener('click',(e) => deleteTask(projectIndex, e.target.id));
+    }
+}
+function eventForCancelProject(projectModalDiv){
+    var cancelBtn = document.querySelector('.cancel-btn');
+    cancelBtn.addEventListener('click', () => closeProjectModal(projectModalDiv));
+}
+function eventForOkProject(projectModalDiv){
+    var okBtn = document.querySelector('.ok-btn');
+    okBtn.addEventListener('click',getProjectTitle(projectModalDiv));
+}
+
+//User Interactions
+function openProjectModal(){
+    // var projectName = prompt('Project title');
+    // addNewProject(projectName);
+    // renderLeftSideBar();
+    // eventForProjects();
+    const projectModalDiv = document.querySelector('.project-modal-hide');
+    projectModalDiv.classList.remove('project-modal-hide');
+    projectModalDiv.classList.add('project-modal');
+    eventForCancelProject(projectModalDiv);
+    eventForOkProject(projectModalDiv);
+}
+function closeProjectModal(projectModalDiv){
+    projectModalDiv.classList.remove('project-modal');
+    projectModalDiv.classList.add('project-modal-hide');
+}
+function getProjectTitle(projectModalDiv){
+    var titleInput = document.getElementById('title');
+    var title = titleInput.value;
+    console.log(title);
+}
+
+//Logic Interaction
+function setNewProject(projectName){
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().createNewProject(projectName);
+}
+function addNewTask(projectIndex){
+    var title = 'title';
+    var description = 'Desc';
+    var dueDate = '27-09-2003';
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().addTaskToProject(
+        projectIndex,
+        title,
+        description,
+        dueDate
+    );
+    renderMainContent(projectIndex);
+}
+function deleteTask(projectIndex, deleteBtnId){
+    var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteTaskFromProject(projectIndex, taskIndex);
+    renderMainContent(projectIndex);
+}
 })();
 
 /******/ })()
