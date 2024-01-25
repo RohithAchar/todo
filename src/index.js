@@ -37,13 +37,14 @@ function renderMain(projectId){
     render().addTaskBtn(projectId);
     render().tasks(logic().getTasksFromProject(projectId));
     eventForTaskBtn();
+    eventForDeleteTaskBtns();
 }
-function renderProjectTasks(projectId){
-    render().clearMain();
-    render().addTaskBtn(projectId);
-    render().tasks(logic().getTasksFromProject(projectId));
-    eventForTaskBtn();
-}
+// function renderProjectTasks(projectId){
+//     render().clearMain();
+//     render().addTaskBtn(projectId);
+//     render().tasks(logic().getTasksFromProject(projectId));
+//     eventForTaskBtn();
+// }
 function openTaskModal(e){
     var taskBtnId = e.target.id;
     var projectId = taskBtnId.charAt(taskBtnId.length - 1);
@@ -98,6 +99,12 @@ function eventForAddBtn(){
     const addBtn = document.querySelector('.add-task-btn');
     addBtn.addEventListener('click',getTaskDetail);
 }
+function eventForDeleteTaskBtns(){
+    var deleteBtns = document.querySelectorAll('.delete-btn');
+    for (const deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener('click',deleteTask);
+    }
+}
 
 //User input
 function getProjectName(){
@@ -145,5 +152,15 @@ function deleteProject(e){
 }
 function pushTask(projectIndex,title,description,due){
     logic().addTaskToProject(projectIndex,title,description,due);
+    renderMain(projectIndex);
+}
+function deleteTask(e){
+    const taskBtn = document.querySelector('.btn');
+    var taskBtnId = taskBtn.id;
+    var projectIndex = taskBtnId.charAt(taskBtnId.length - 1);
+    var deleteBtnId = e.target.id;
+    var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
+
+    logic().deleteTaskFromProject(projectIndex, taskIndex);
     renderMain(projectIndex);
 }
