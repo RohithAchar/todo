@@ -91,11 +91,11 @@ function createCard(deleteBtnId,title,description,dueDate){
     var cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     // cardDiv.id = `task-${index}`;
-    var titleTag = document.createElement('h3');
+    var titleTag = document.createElement('p');
     titleTag.textContent = title;
-    var descriptionTag = document.createElement('h3');
+    var descriptionTag = document.createElement('p');
     descriptionTag.textContent = description;
-    var dueTag = document.createElement('h3');
+    var dueTag = document.createElement('p');
     dueTag.textContent = dueDate;
     var deleteBtn = document.createElement('button');
     deleteBtn.id = `delete-${deleteBtnId}`;

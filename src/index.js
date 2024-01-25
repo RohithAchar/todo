@@ -135,7 +135,7 @@ function getTaskDetail(){
         description.length > 0 &&
         dueDate.length > 0
     ){
-        pushTask(projectIndex,title,description,dueDate);
+        pushTask(projectIndex,title.toUpperCase(),description,dueDate);
         titleInput.value = '';
         descriptionInput.value = '';
         dueDateInput.value = '';
