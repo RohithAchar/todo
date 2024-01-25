@@ -7,6 +7,7 @@ a{
     color: black;
     padding: 3px;
 }
+/* Project modal */
 .project-modal-hide{
     display: none;
 }
@@ -20,6 +21,22 @@ a{
     width: 100vw;
     height: 100vh;
 }
+.input-wrapper > input{
+    padding: 7px;
+    margin-left: 5px;
+}
+#project-modal > .input-wrapper{
+    padding: 10px;
+}
+#project-modal button{
+    width: 108px;
+    height: 40px;
+    margin: 0 5px;
+}
+.ok-btn{
+    background-color: rgb(255, 225, 93);
+}
+/* Task modal */
 .hide-task-modal-container{
     display: none;
 }
@@ -33,6 +50,7 @@ a{
     width: 100vw;
     height: 100vh;
 }
+/* Common */
 #content{
     display: flex;
 }
@@ -65,4 +83,21 @@ a{
     grid-template-columns: 1fr 2fr 1fr 1fr;
     border-bottom: 1px solid black;
     margin-left: 2.5%;
+}
+
+/* Projects */
+.project-wrapper{
+    display: flex;
+    gap: 5px;
+}
+.delete-project{
+    border: 0;
+    background-color: #fff;
+    color: #ff0000;
+}
+.delete-project:hover{
+    cursor: pointer;
+    background-color: #ffdbdb;
+    color: black;
+    border-radius: 50%;
 }

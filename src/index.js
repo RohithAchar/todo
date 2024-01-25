@@ -4,6 +4,8 @@ import './styles.css';
 
 // Rendering
 init();
+render().projectModal();
+render().taskModal();
 function init(){
     render().clearLeftSideBar();
     render().leftSideBarHeading();
@@ -20,7 +22,7 @@ function renderProjects(){
     eventsForDeleteProjectBtn();
 }
 function openProjectModal(){
-    render().projectModal();
+    // render().projectModal();
     var projectModal = document.getElementById('project-modal');
     projectModal.classList.remove('project-modal-hide');
     projectModal.classList.add('project-modal');
@@ -35,6 +37,7 @@ function closeProjectModal(){
 function renderMain(projectId){
     render().clearMain();
     render().addTaskBtn(projectId);
+    render().header();
     render().tasks(logic().getTasksFromProject(projectId));
     eventForTaskBtn();
     eventForDeleteTaskBtns();
@@ -48,7 +51,7 @@ function renderMain(projectId){
 function openTaskModal(e){
     var taskBtnId = e.target.id;
     var projectId = taskBtnId.charAt(taskBtnId.length - 1);
-    render().taskModal();
+    // render().taskModal();
     var taskModal = document.getElementById('task-modal');
     taskModal.classList.remove('hide-task-modal-container');
     taskModal.classList.add('show-task-modal-container');

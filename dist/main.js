@@ -721,6 +721,7 @@ function createCard(deleteBtnId,title,description,dueDate){
 }
 function projectModal(){
     var formWrapper = document.createElement('div');
+    formWrapper.id = 'project-modal';
     formWrapper.classList.add('project-modal-hide');
     var inputWrapper = document.createElement('div');
     inputWrapper.classList.add('input-wrapper');
@@ -889,176 +890,167 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-//Rendering
-function renderLeftSideBar(){
+// Rendering
+init();
+function init(){
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearLeftSideBar();
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().leftSideBarHeading();
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addProjectBtn();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
+    renderProjects();
+    eventForAddProjectBtn();
+};
+function renderProjects(){
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectName(
         (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getAllProjectName()
     );
-    eventForProjectBtn();
-    // render().projectModal();
-    // render().taskModal();
+    eventsForProject();
+    eventsForDeleteProjectBtn();
 }
-renderLeftSideBar();
-(0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
-(0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().taskModal();
-function renderMainContent(projectIndex){
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addTaskBtn(projectIndex);
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().header();
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().tasks(
-        (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getTasksFromProject(projectIndex)
-    );
-    eventForAddTaskBtn();
-    eventForDeleteTaskBtn(projectIndex);
-}
-//Events
-function eventForProjectBtn(){
-    const addNewProjectBtn = document.querySelector('.project-btn');
-    addNewProjectBtn.addEventListener('click',() => {
-        openProjectModal();
-    });
-}
-function eventForProjects(){
-    var projects = document.querySelectorAll('.project');
-    for (const project of projects) {
-        project.addEventListener('click',(e) => renderMainContent(e.target.id));
-    }
-}
-function eventForAddTaskBtn(){
-    const addTaskBtn = document.querySelector('.btn');
-    // addTaskBtn.addEventListener('click',() => addNewTask(projectIndex));
-    addTaskBtn.addEventListener('click',(e) => openTaskModal(e));
-}
-function eventForDeleteTaskBtn(projectIndex){
-    const deleteBtns = document.querySelectorAll('.delete-btn');
-    for (const deleteBtn of deleteBtns) {
-        deleteBtn.addEventListener('click',(e) => deleteTask(projectIndex, e.target.id));
-    }
-}
-function eventForCancelProject(projectModalDiv){
-    var cancelBtn = document.querySelector('.cancel-btn');
-    cancelBtn.addEventListener('click', () => closeProjectModal(projectModalDiv));
-}
-function eventForOkProject(projectModalDiv){
-    var okBtn = document.querySelector('.ok-btn');
-    okBtn.addEventListener('click',() => getProjectTitle(projectModalDiv));
-}
-function eventForDeleteProjectBtn(){
-    var deleteProjectBtns = document.querySelectorAll('.delete-project');
-    for (const deleteBtn of deleteProjectBtns) {
-        deleteBtn.addEventListener('click', (e) => deleteProject(e));
-    }
-}
-function eventForCloseModalBtn(taskModalDiv){
-    var closeTaskModalBtn = document.querySelector('.close-task-modal');
-    closeTaskModalBtn.addEventListener('click',() => closeTaskModal(taskModalDiv));
-}
-function eventForAddBtn(projectIndex, taskModalDiv){
-    var addTaskBtn = document.querySelector('.add-task-btn');
-    addTaskBtn.addEventListener('click',() => getTaskDetails(projectIndex, taskModalDiv));
-}
-
-//User Interactions
 function openProjectModal(){
-    // var projectName = prompt('Project title');
-    // addNewProject(projectName);
-    // renderLeftSideBar();
-    // eventForProjects();
-    const projectModalDiv = document.querySelector('.project-modal-hide');
-    projectModalDiv.classList.remove('project-modal-hide');
-    projectModalDiv.classList.add('project-modal');
-    eventForCancelProject(projectModalDiv);
-    eventForOkProject(projectModalDiv);
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
+    var projectModal = document.getElementById('project-modal');
+    projectModal.classList.remove('project-modal-hide');
+    projectModal.classList.add('project-modal');
+    eventForOkBtn();
+    eventForCancelBtn();
 }
-function closeProjectModal(projectModalDiv){
-    projectModalDiv.classList.remove('project-modal');
-    projectModalDiv.classList.add('project-modal-hide');
+function closeProjectModal(){
+    var projectModal = document.getElementById('project-modal');
+    projectModal.classList.remove('project-modal');
+    projectModal.classList.add('project-modal-hide');
 }
-function getProjectTitle(projectModalDiv){
-    var titleInput = document.getElementById('title');
-    var title = titleInput.value;
-    if(title.length > 0){
-        titleInput.value = '';
-        setNewProject(title.toUpperCase());
-        renderLeftSideBar();
-        eventForProjects();
-        eventForDeleteProjectBtn();
-        closeProjectModal(projectModalDiv);
-    }
+function renderMain(projectId){
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addTaskBtn(projectId);
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().tasks((0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getTasksFromProject(projectId));
+    eventForTaskBtn();
+    eventForDeleteTaskBtns();
 }
-function openTaskModal(addTaskBtnId){
-    var id = addTaskBtnId.target.id;
-    var projectIndex = id.charAt(id.length - 1);
+// function renderProjectTasks(projectId){
+//     render().clearMain();
+//     render().addTaskBtn(projectId);
+//     render().tasks(logic().getTasksFromProject(projectId));
+//     eventForTaskBtn();
+// }
+function openTaskModal(e){
+    var taskBtnId = e.target.id;
+    var projectId = taskBtnId.charAt(taskBtnId.length - 1);
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().taskModal();
     var taskModal = document.getElementById('task-modal');
     taskModal.classList.remove('hide-task-modal-container');
     taskModal.classList.add('show-task-modal-container');
-    eventForCloseModalBtn(taskModal);
-    eventForAddBtn(projectIndex, taskModal);
-}
-function closeTaskModal(taskModalDiv){
-    taskModalDiv.classList.remove('show-task-modal-container');
-    taskModalDiv.classList.add('hide-task-modal-container');
-}
-function getTaskDetails(projectIndex, taskModalDiv){
-    var titleInput = document.getElementById('task-title');
-    var descriptionInput = document.getElementById('description');
-    var dueDate = document.getElementById('due-date');
 
+    eventForCloseTaskModal();
+    eventForAddBtn();
+}
+function closeTaskModal(){
+    var taskModal = document.getElementById('task-modal');
+    taskModal.classList.remove('show-task-modal-container');
+    taskModal.classList.add('hide-task-modal-container');
+}
+
+//Events
+function eventForAddProjectBtn(){
+    const addProjectBtn = document.querySelector('.project-btn');
+    addProjectBtn.addEventListener('click', openProjectModal);
+}
+function eventForCancelBtn(){
+    const cancelBtn = document.querySelector('.cancel-btn');
+    cancelBtn.addEventListener('click', closeProjectModal);
+}
+function eventForOkBtn(){
+    const okBtn = document.querySelector('.ok-btn');
+    okBtn.addEventListener('click', getProjectName);
+}
+function eventsForDeleteProjectBtn(){
+    var deleteProjectBtns = document.querySelectorAll('.delete-project');
+    for (const deleteBtn of deleteProjectBtns) {
+        deleteBtn.addEventListener('click',deleteProject);
+    }
+}
+function eventsForProject(){
+    const projects = document.querySelectorAll('.project');
+    for (const project of projects) {
+        project.addEventListener('click',(e) => renderMain(e.target.id));
+    }
+}
+function eventForTaskBtn(){
+    var taskBtn = document.querySelector('.btn');
+    taskBtn.addEventListener('click',openTaskModal);
+}
+function eventForCloseTaskModal(){
+    var closeTaskModalBtn = document.querySelector('.close-task-modal');
+    closeTaskModalBtn.addEventListener('click',closeTaskModal);
+}
+function eventForAddBtn(){
+    const addBtn = document.querySelector('.add-task-btn');
+    addBtn.addEventListener('click',getTaskDetail);
+}
+function eventForDeleteTaskBtns(){
+    var deleteBtns = document.querySelectorAll('.delete-btn');
+    for (const deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener('click',deleteTask);
+    }
+}
+
+//User input
+function getProjectName(){
+    var titleInput = document.getElementById('title');
+    var projectName = titleInput.value;
+    if(projectName.length > 0){
+        pushProject(projectName.toUpperCase());
+        titleInput.value = '';
+        closeProjectModal();
+    }
+}
+function getTaskDetail(){
+    const addTaskBtn = document.querySelector('.btn');
+    var addTaskBtnId = addTaskBtn.id;
+    var projectIndex = addTaskBtnId.charAt(addTaskBtnId.length - 1);
+    var titleInput = document.getElementById('task-title');
     var title = titleInput.value;
+    var descriptionInput = document.getElementById('description');
     var description = descriptionInput.value;
-    var date = dueDate.value;
+    var dueDateInput = document.getElementById('due-date');
+    var dueDate = dueDateInput.value;
 
     if(
         title.length > 0 &&
         description.length > 0 &&
-        date.length > 0
+        dueDate.length > 0
     ){
-        addNewTask(
-            projectIndex,
-            title.toUpperCase(),
-            description,
-            date,
-            taskModalDiv
-        );
+        pushTask(projectIndex,title,description,dueDate);
+        titleInput.value = '';
+        descriptionInput.value = '';
+        dueDateInput.value = '';
+        closeTaskModal();
     }
-    titleInput.value = "";
-    descriptionInput.value = '';
-    dueDate.value = '';
 }
-
-//Logic Interaction
-function setNewProject(projectName){
+//logic
+function pushProject(projectName){
     (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().createNewProject(projectName);
-}
-function addNewTask(projectIndex, title, description, dueDate,taskModalDiv){
-    var addTaskBtn = document.querySelector('.btn');
-    var btnId = addTaskBtn.id;
-    var index = btnId.charAt(btnId.length - 1);
-    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().addTaskToProject(
-        index,
-        title,
-        description,
-        dueDate
-    );
-    closeTaskModal(taskModalDiv);
-    renderMainContent(index);
-}
-function deleteTask(projectIndex, deleteBtnId){
-    var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
-    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteTaskFromProject(projectIndex, taskIndex);
-    renderMainContent(projectIndex);
+    init();
 }
 function deleteProject(e){
-    var id = e.target.id;
-    var projectIndex = id.charAt(id.length - 1);
-    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteProject(projectIndex);
-    renderLeftSideBar();
-    renderMainContent(projectIndex);
-    eventForDeleteProjectBtn();
+    var deleteBtnId = e.target.id;
+    var projectId = deleteBtnId.charAt(deleteBtnId.length - 1);
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteProject(projectId);
+    init();
+}
+function pushTask(projectIndex,title,description,due){
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().addTaskToProject(projectIndex,title,description,due);
+    renderMain(projectIndex);
+}
+function deleteTask(e){
+    const taskBtn = document.querySelector('.btn');
+    var taskBtnId = taskBtn.id;
+    var projectIndex = taskBtnId.charAt(taskBtnId.length - 1);
+    var deleteBtnId = e.target.id;
+    var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
+
+    (0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().deleteTaskFromProject(projectIndex, taskIndex);
+    renderMain(projectIndex);
 }
 })();
 
