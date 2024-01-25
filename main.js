@@ -20,8 +20,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `body{
+___CSS_LOADER_EXPORT___.push([module.id, `*{
+    font-family: 'Rubik', sans-serif;
+}
+body{
     margin: 0;
     overflow: hidden;
 }
@@ -30,6 +34,7 @@ a{
     color: black;
     padding: 3px;
 }
+/* Project modal */
 .project-modal-hide{
     display: none;
 }
@@ -43,6 +48,22 @@ a{
     width: 100vw;
     height: 100vh;
 }
+.input-wrapper > input{
+    padding: 7px;
+    margin-left: 5px;
+}
+#project-modal > .input-wrapper{
+    padding: 10px;
+}
+#project-modal button{
+    width: 108px;
+    height: 40px;
+    margin: 0 5px;
+}
+.ok-btn{
+    background-color: rgb(255, 225, 93);
+}
+/* Task modal */
 .hide-task-modal-container{
     display: none;
 }
@@ -56,6 +77,32 @@ a{
     width: 100vw;
     height: 100vh;
 }
+#task-modal{
+    background-color: rgba(0, 0, 0, 0.942);
+}
+#task-modal > .input-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.input-wrapper > input{
+    margin-bottom: 10px;
+}
+.input-wrapper > label{
+    margin-left: 5px;
+}
+.input-wrapper > button{
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.add-task-btn{
+    background-color: rgb(255, 225, 93);
+}
+/* Common */
 #content{
     display: flex;
 }
@@ -86,9 +133,26 @@ a{
     width: 95%;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr;
-    border-bottom: 1px solid black;
+    border-bottom: 1px dotted black;
     margin-left: 2.5%;
-}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,8BAA8B;IAC9B,iBAAiB;AACrB","sourcesContent":["body{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n.project-modal-hide{\n    display: none;\n}\n.project-modal{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n.hide-task-modal-container{\n    display: none;\n}\n.show-task-modal-container{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px solid black;\n    margin-left: 2.5%;\n}"],"sourceRoot":""}]);
+}
+
+/* Projects */
+.project-wrapper{
+    display: flex;
+    gap: 5px;
+}
+.delete-project{
+    border: 0;
+    background-color: #fff;
+    color: #ff0000;
+}
+.delete-project:hover{
+    cursor: pointer;
+    background-color: #ffdbdb;
+    color: black;
+    border-radius: 50%;
+}`, "",{"version":3,"sources":["webpack://./src/styles.css"],"names":[],"mappings":"AACA;IACI,gCAAgC;AACpC;AACA;IACI,SAAS;IACT,gBAAgB;AACpB;AACA;IACI,qBAAqB;IACrB,YAAY;IACZ,YAAY;AAChB;AACA,kBAAkB;AAClB;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,YAAY;IACZ,gBAAgB;AACpB;AACA;IACI,aAAa;AACjB;AACA;IACI,YAAY;IACZ,YAAY;IACZ,aAAa;AACjB;AACA;IACI,mCAAmC;AACvC;AACA,eAAe;AACf;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,sBAAsB;IACtB,kBAAkB;IAClB,YAAY;IACZ,aAAa;AACjB;AACA;IACI,sCAAsC;AAC1C;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,sBAAsB;AAC1B;AACA;IACI,mBAAmB;AACvB;AACA;IACI,gBAAgB;AACpB;AACA;IACI,YAAY;IACZ,eAAe;IACf,gBAAgB;AACpB;AACA;IACI,mCAAmC;AACvC;AACA,WAAW;AACX;IACI,aAAa;AACjB;AACA;IACI,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,mBAAmB;AACvB;AACA;IACI,YAAY;IACZ,mCAAmC;IACnC,mBAAmB;AACvB;AACA;IACI,mCAAmC;IACnC,YAAY;IACZ,YAAY;IACZ,YAAY;IACZ,mBAAmB;AACvB;AACA;IACI,WAAW;IACX,aAAa;IACb,oCAAoC;AACxC;AACA;IACI,UAAU;IACV,aAAa;IACb,sCAAsC;IACtC,+BAA+B;IAC/B,iBAAiB;AACrB;;AAEA,aAAa;AACb;IACI,aAAa;IACb,QAAQ;AACZ;AACA;IACI,SAAS;IACT,sBAAsB;IACtB,cAAc;AAClB;AACA;IACI,eAAe;IACf,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;AACtB","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;900&display=swap');\n*{\n    font-family: 'Rubik', sans-serif;\n}\nbody{\n    margin: 0;\n    overflow: hidden;\n}\na{\n    text-decoration: none;\n    color: black;\n    padding: 3px;\n}\n/* Project modal */\n.project-modal-hide{\n    display: none;\n}\n.project-modal{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n.input-wrapper > input{\n    padding: 7px;\n    margin-left: 5px;\n}\n#project-modal > .input-wrapper{\n    padding: 10px;\n}\n#project-modal button{\n    width: 108px;\n    height: 40px;\n    margin: 0 5px;\n}\n.ok-btn{\n    background-color: rgb(255, 225, 93);\n}\n/* Task modal */\n.hide-task-modal-container{\n    display: none;\n}\n.show-task-modal-container{\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    background-color: #fff;\n    position: absolute;\n    width: 100vw;\n    height: 100vh;\n}\n#task-modal{\n    background-color: rgba(0, 0, 0, 0.942);\n}\n#task-modal > .input-wrapper{\n    display: flex;\n    flex-direction: column;\n    width: 250px;\n    padding: 30px;\n    border-radius: 5px;\n    background-color: #fff;\n}\n.input-wrapper > input{\n    margin-bottom: 10px;\n}\n.input-wrapper > label{\n    margin-left: 5px;\n}\n.input-wrapper > button{\n    height: 30px;\n    margin-top: 5px;\n    margin-left: 5px;\n}\n.add-task-btn{\n    background-color: rgb(255, 225, 93);\n}\n/* Common */\n#content{\n    display: flex;\n}\n#left-side-bar{\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px 100px;\n}\n.project-btn{\n    height: 50px;\n    background-color: rgb(255, 225, 93);\n    margin-bottom: 30px;\n}\n.btn{\n    background-color: rgb(255, 225, 93);\n    height: 50px;\n    float: right;\n    margin: 10px;\n    margin-right: 100px;\n}\n#main-container{\n    width: 100%;\n    height: 100vh;\n    background-color: rgb(233, 233, 233);\n}\n.card{\n    width: 95%;\n    display: grid;\n    grid-template-columns: 1fr 2fr 1fr 1fr;\n    border-bottom: 1px dotted black;\n    margin-left: 2.5%;\n}\n\n/* Projects */\n.project-wrapper{\n    display: flex;\n    gap: 5px;\n}\n.delete-project{\n    border: 0;\n    background-color: #fff;\n    color: #ff0000;\n}\n.delete-project:hover{\n    cursor: pointer;\n    background-color: #ffdbdb;\n    color: black;\n    border-radius: 50%;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -705,11 +769,11 @@ function createCard(deleteBtnId,title,description,dueDate){
     var cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
     // cardDiv.id = `task-${index}`;
-    var titleTag = document.createElement('h3');
+    var titleTag = document.createElement('p');
     titleTag.textContent = title;
-    var descriptionTag = document.createElement('h3');
+    var descriptionTag = document.createElement('p');
     descriptionTag.textContent = description;
-    var dueTag = document.createElement('h3');
+    var dueTag = document.createElement('p');
     dueTag.textContent = dueDate;
     var deleteBtn = document.createElement('button');
     deleteBtn.id = `delete-${deleteBtnId}`;
@@ -892,6 +956,8 @@ __webpack_require__.r(__webpack_exports__);
 
 // Rendering
 init();
+(0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
+(0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().taskModal();
 function init(){
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearLeftSideBar();
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().leftSideBarHeading();
@@ -908,7 +974,7 @@ function renderProjects(){
     eventsForDeleteProjectBtn();
 }
 function openProjectModal(){
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().projectModal();
+    // render().projectModal();
     var projectModal = document.getElementById('project-modal');
     projectModal.classList.remove('project-modal-hide');
     projectModal.classList.add('project-modal');
@@ -923,6 +989,7 @@ function closeProjectModal(){
 function renderMain(projectId){
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().clearMain();
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().addTaskBtn(projectId);
+    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().header();
     (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().tasks((0,_logic__WEBPACK_IMPORTED_MODULE_0__["default"])().getTasksFromProject(projectId));
     eventForTaskBtn();
     eventForDeleteTaskBtns();
@@ -936,7 +1003,7 @@ function renderMain(projectId){
 function openTaskModal(e){
     var taskBtnId = e.target.id;
     var projectId = taskBtnId.charAt(taskBtnId.length - 1);
-    (0,_userInterface__WEBPACK_IMPORTED_MODULE_1__["default"])().taskModal();
+    // render().taskModal();
     var taskModal = document.getElementById('task-modal');
     taskModal.classList.remove('hide-task-modal-container');
     taskModal.classList.add('show-task-modal-container');
@@ -1020,7 +1087,7 @@ function getTaskDetail(){
         description.length > 0 &&
         dueDate.length > 0
     ){
-        pushTask(projectIndex,title,description,dueDate);
+        pushTask(projectIndex,title.toUpperCase(),description,dueDate);
         titleInput.value = '';
         descriptionInput.value = '';
         dueDateInput.value = '';
