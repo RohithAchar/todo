@@ -107,6 +107,7 @@ function createCard(deleteBtnId,title,description,dueDate){
 }
 function projectModal(){
     var formWrapper = document.createElement('div');
+    formWrapper.id = 'project-modal';
     formWrapper.classList.add('project-modal-hide');
     var inputWrapper = document.createElement('div');
     inputWrapper.classList.add('input-wrapper');
