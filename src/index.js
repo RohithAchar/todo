@@ -4,25 +4,25 @@ import './styles.css';
 
 // Rendering
 init();
-render().projectModal();
-render().taskModal();
+render.projectModal();
+render.taskModal();
 function init(){
-    render().clearLeftSideBar();
-    render().leftSideBarHeading();
-    render().addProjectBtn();
-    render().clearMain();
+    render.clearLeftSideBar();
+    render.leftSideBarHeading();
+    render.addProjectBtn();
+    render.clearMain();
     renderProjects();
     eventForAddProjectBtn();
 };
 function renderProjects(){
-    render().projectName(
-        logic().getAllProjectName()
+    render.projectName(
+        logic.getAllProjectName()
     );
     eventsForProject();
     eventsForDeleteProjectBtn();
 }
 function openProjectModal(){
-    // render().projectModal();
+    // render.projectModal();
     var projectModal = document.getElementById('project-modal');
     projectModal.classList.remove('project-modal-hide');
     projectModal.classList.add('project-modal');
@@ -35,23 +35,23 @@ function closeProjectModal(){
     projectModal.classList.add('project-modal-hide');
 }
 function renderMain(projectId){
-    render().clearMain();
-    render().addTaskBtn(projectId);
-    render().header();
-    render().tasks(logic().getTasksFromProject(projectId));
+    render.clearMain();
+    render.addTaskBtn(projectId);
+    render.header();
+    render.tasks(logic().getTasksFromProject(projectId));
     eventForTaskBtn();
     eventForDeleteTaskBtns();
 }
 // function renderProjectTasks(projectId){
-//     render().clearMain();
-//     render().addTaskBtn(projectId);
-//     render().tasks(logic().getTasksFromProject(projectId));
+//     render.clearMain();
+//     render.addTaskBtn(projectId);
+//     render.tasks(logic().getTasksFromProject(projectId));
 //     eventForTaskBtn();
 // }
 function openTaskModal(e){
     var taskBtnId = e.target.id;
     var projectId = taskBtnId.charAt(taskBtnId.length - 1);
-    // render().taskModal();
+    // render.taskModal();
     var taskModal = document.getElementById('task-modal');
     taskModal.classList.remove('hide-task-modal-container');
     taskModal.classList.add('show-task-modal-container');
@@ -144,17 +144,17 @@ function getTaskDetail(){
 }
 //logic
 function pushProject(projectName){
-    logic().createNewProject(projectName);
+    logic.createNewProject(projectName);
     init();
 }
 function deleteProject(e){
     var deleteBtnId = e.target.id;
     var projectId = deleteBtnId.charAt(deleteBtnId.length - 1);
-    logic().deleteProject(projectId);
+    logic.deleteProject(projectId);
     init();
 }
 function pushTask(projectIndex,title,description,due){
-    logic().addTaskToProject(projectIndex,title,description,due);
+    logic.addTaskToProject(projectIndex,title,description,due);
     renderMain(projectIndex);
 }
 function deleteTask(e){
@@ -164,6 +164,6 @@ function deleteTask(e){
     var deleteBtnId = e.target.id;
     var taskIndex = deleteBtnId.charAt(deleteBtnId.length - 1);
 
-    logic().deleteTaskFromProject(projectIndex, taskIndex);
+    logic.deleteTaskFromProject(projectIndex, taskIndex);
     renderMain(projectIndex);
 }

@@ -2,19 +2,31 @@ const leftSideBarDiv = document.querySelector('#left-side-bar');
 const mainDiv = document.querySelector('#main-container');
 const contentDiv = document.querySelector('#content');
 
-export default function render(){
-    return{
-        leftSideBarHeading,
-        projectName,
-        addTaskBtn,
-        tasks,
-        clearLeftSideBar,
-        clearMain,
-        addProjectBtn,
-        header,
-        projectModal,
-        taskModal
-    }
+// export default function render(){
+//     return{
+//         leftSideBarHeading,
+//         projectName,
+//         addTaskBtn,
+//         tasks,
+//         clearLeftSideBar,
+//         clearMain,
+//         addProjectBtn,
+//         header,
+//         projectModal,
+//         taskModal
+//     }
+// }
+export default {
+    leftSideBarHeading,
+    projectName,
+    addTaskBtn,
+    tasks,
+    clearLeftSideBar,
+    clearMain,
+    addProjectBtn,
+    header,
+    projectModal,
+    taskModal
 }
 function header(){
     var div = document.createElement('div');

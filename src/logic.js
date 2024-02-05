@@ -1,7 +1,18 @@
 var tasksArray = [];
 
-export default function logic(){
-    return {
+// export default function logic(){
+//     return {
+//         createNewProject,
+//         deleteProject,
+//         addTaskToProject,
+//         deleteTaskFromProject,
+//         getAllProjectName,
+//         getTasksFromProject,
+//         getAllProjectTask
+//     }
+// }
+
+export default {
         createNewProject,
         deleteProject,
         addTaskToProject,
@@ -9,7 +20,6 @@ export default function logic(){
         getAllProjectName,
         getTasksFromProject,
         getAllProjectTask
-    }
 }
 
 function createNewProject(projectName){
